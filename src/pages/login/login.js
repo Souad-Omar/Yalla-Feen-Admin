@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import Input from "../../components/controlles/input";
 import Button from "../../components/controlles/button";
+import axios from "axios";
 // import { useSelector, useDispatch } from "react-redux";
 // import * as ACTIONS from "../../store/actions";
 
 export default function Login(props) {
   document.title = "login";
-  console.log(props);
+  // console.log(props);
   // const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
-
+  const [isAdmin, setisAdmin] = useState("")
   const [formErrors, setFormErrors] = useState({
     email: "",
     password: "",
@@ -24,7 +25,7 @@ export default function Login(props) {
   }
 
   const onInputChange = (e) => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
 
     if (e.target.name === "email") {
       setLoginForm({
@@ -73,13 +74,26 @@ export default function Login(props) {
 
     let user_mail = document.getElementsByName("email")[0].value;
     window.localStorage.setItem("email", user_mail.split("@")[0]);
+    axios.post("http://127.0.0.1:8000/user/login",{email:loginForm.email,password:loginForm.password})
+         .then(res=>{
+                console.log(res)
+                if(res.data.role!=='admin'){
+                  setisAdmin("Please Enter the user name and password for a stuff account")
+                }
+              })
+         .catch(err => 
+        console.log(err)
+      )
     // dispatch(ACTIONS.UserLogin({ username: user_mail.split("@")[0] }));
-    props.history.push("/");
+    // props.history.push("/");
   };
   return (
     <div className="container mt-5">
       <div>
+     
         <form className="form-group border p-4">
+        <small className="text-danger" >{isAdmin}</small> 
+        <br/>
           <Input
             value={loginForm.email}
             label={"Email Address"}

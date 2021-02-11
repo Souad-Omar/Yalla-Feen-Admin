@@ -1,4 +1,4 @@
-import {Route} from "react-router-dom";
+import {Redirect, Route, Router} from "react-router-dom";
 import {lazy,Suspense} from 'react';
 import Navbar from "../components/navBar/navbar";
 
@@ -6,6 +6,23 @@ import Navbar from "../components/navBar/navbar";
 const Login = lazy(()=> import('../pages/login/login'));
 const Home = lazy(()=> import('../pages/home/Home'));
 
+
+const authentication = {
+  isLoggedIn:false,
+  onAuthentication(){
+    this.isLoggedIn = true;
+  },
+  getLogInStatus(){
+    return this.isLoggedIn;
+  }
+}
+
+const PrivateRouter = (props)=>{
+   return <Route path={props.path} render={data=>(
+              authentication.getLogInStatus()===true
+              ?<props.component {...data}></props.component>
+              :<Redirect to={{pathname:"/login"}}/>)}/>
+}
 
 //
 // const requireLogin = (to, from, next) => {
@@ -25,9 +42,9 @@ export default function Routes() {
         <Navbar/>
      <div className={"container"}>
           <Suspense fallback={<div>loading...</div>}>
-                <Route  path="/" exact component={Home}/>
-                <Route  path="/home" exact component={Home}/>
                 <Route  path="/login" exact component={Login}/>
+                {/* <PrivateRouter  path="/" exact component={Home}/> */}
+                <PrivateRouter  path="/home" exact component={Home}/>
           </Suspense>
       </div>
     </>
