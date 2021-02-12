@@ -1,4 +1,4 @@
-import {Redirect, Route, Router} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import {lazy,Suspense} from 'react';
 import Navbar from "../components/navBar/navbar";
 
@@ -43,8 +43,8 @@ export default function Routes() {
      <div className={"container"}>
           <Suspense fallback={<div>loading...</div>}>
                 <Route  path="/login" exact component={Login}/>
-                {/* <PrivateRouter  path="/" exact component={Home}/> */}
                 <PrivateRouter  path="/home" exact component={Home}/>
+                {/* <PrivateRouter  path="/" exact component={Home}/> */}
           </Suspense>
       </div>
     </>

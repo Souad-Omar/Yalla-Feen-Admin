@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import Input from "../../components/controlles/input";
 import Button from "../../components/controlles/button";
 import axios from "axios";
-// import { useSelector, useDispatch } from "react-redux";
+import * as ACTIONS from '../../store/actions/actions'
+
+import { useSelector, useDispatch } from "react-redux";
+import { Router } from "react-router-dom";
 // import * as ACTIONS from "../../store/actions";
 
 export default function Login(props) {
   document.title = "login";
   // console.log(props);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
   const [isAdmin, setisAdmin] = useState("")
+  const login = useSelector(state => state.login)
   const [formErrors, setFormErrors] = useState({
     email: "",
     password: "",
@@ -71,22 +75,18 @@ export default function Login(props) {
   };
   const onButtonClick = (e) => {
     e.preventDefault();
-
+    
     let user_mail = document.getElementsByName("email")[0].value;
     window.localStorage.setItem("email", user_mail.split("@")[0]);
-    axios.post("http://127.0.0.1:8000/user/login",{email:loginForm.email,password:loginForm.password})
-         .then(res=>{
-                console.log(res)
-                if(res.data.role!=='admin'){
-                  setisAdmin("Please Enter the user name and password for a stuff account")
-                }
-              })
-         .catch(err => 
-        console.log(err)
-      )
-    // dispatch(ACTIONS.UserLogin({ username: user_mail.split("@")[0] }));
-    // props.history.push("/");
-  };
+    const body = {email:loginForm.email,password:loginForm.password};
+    dispatch(ACTIONS.LOGIN(body));
+    console.log(login.isAdmin);
+    if(!login.isAdmin){
+      setisAdmin("Sorry this page is for admin stuff")
+    }else{
+      props.history.push("/home");
+    }
+  }
   return (
     <div className="container mt-5">
       <div>
