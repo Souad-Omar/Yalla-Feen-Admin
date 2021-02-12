@@ -8,7 +8,7 @@ const Home = lazy(()=> import('../pages/home/Home'));
 
 
 const authentication = {
-  isLoggedIn:false,
+  isLoggedIn:true,
   onAuthentication(){
     this.isLoggedIn = true;
   },

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
-  config.headers['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMWM3NmJlMzBkZjQ4MTk1NDRmYTU1MiIsInVzZXJuYW1lIjoibXVzdGFmYTIiLCJleHAiOjE2MTc5MDQ1ODQsImlhdCI6MTYxMjcyMDU4NH0.ML1qyH8Y5iAYU7v9J4H0xvtUl9HLM0Xqk2_fqASrPMs';
+  config.headers['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMWMwODk4ZGZlZjJiNDA4NDc2ZDg5OSIsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNjE4Mjg3NjQ0LCJpYXQiOjE2MTMxMDM2NDR9.BU7A_h34LkdaRJ9ZamrYNPDJRE4zJZMfva7umZINeQA';
   // console.log(config);
   return config;
 }, function (error) {
