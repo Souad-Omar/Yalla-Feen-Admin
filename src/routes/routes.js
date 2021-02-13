@@ -24,6 +24,7 @@ const PrivateRouter = (props)=>{
               :<Redirect to={{pathname:"/login"}}/>)}/>
 }
 
+
 //
 // const requireLogin = (to, from, next) => {
 //   if (to.meta.auth) {
