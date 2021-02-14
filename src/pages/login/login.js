@@ -16,6 +16,7 @@ export default function Login(props) {
     email: "",
     password: "",
   });
+  
   const [isAdmin, setisAdmin] = useState("")
   const login = useSelector(state => state.login)
   const [formErrors, setFormErrors] = useState({
@@ -73,15 +74,14 @@ export default function Login(props) {
       }
     }
   };
-  const onButtonClick = (e) => {
+  const onButtonClick = async(e) => {
     e.preventDefault();
     
-    let user_mail = document.getElementsByName("email")[0].value;
-    window.localStorage.setItem("email", user_mail.split("@")[0]);
     const body = {email:loginForm.email,password:loginForm.password};
-    dispatch(ACTIONS.LOGIN(body));
     console.log(login.isAdmin);
-    if(!login.isAdmin){
+   await dispatch(ACTIONS.LOGIN(body));
+    
+    if(!localStorage.getItem('token')) {
       setisAdmin("Sorry this page is for admin stuff")
     }else{
       props.history.push("/home");

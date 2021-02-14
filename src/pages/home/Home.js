@@ -5,7 +5,7 @@ import { tableConstants } from "../../components/Table/tableConstant";
 
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
-  config.headers['x-access-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMWMwODk4ZGZlZjJiNDA4NDc2ZDg5OSIsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNjE4Mjg3NjQ0LCJpYXQiOjE2MTMxMDM2NDR9.BU7A_h34LkdaRJ9ZamrYNPDJRE4zJZMfva7umZINeQA';
+  config.headers['x-access-token'] =localStorage.getItem('token');
   // console.log(config);
   return config;
 }, function (error) {

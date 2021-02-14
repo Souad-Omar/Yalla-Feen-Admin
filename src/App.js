@@ -5,10 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import Routes from './Routes/routes'
 
 function App() {
-  const isAuthenticated = React.createContext({
-    value:false,
-    setValue:()=>{}
-  })
+
   return (
     <>  
     <Router>

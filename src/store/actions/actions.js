@@ -23,7 +23,7 @@ export const LOGIN = (body) => async (dispatch) => {
       window.localStorage.setItem('token',response.data.token)
         dispatch({
           type: TYPES.LOGIN,
-          payload: {isLogged:true,isAdmin:true},
+          payload: {isLogged:true,isAdmin:true,username:response.data.username},
         });
     }
   }

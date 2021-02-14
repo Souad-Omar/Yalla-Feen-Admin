@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import Span  from '../controlles/navSpan'
 
 export default function Navbar() {
- 
+  const login = useSelector(state => state.login)
   return (
     <> 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,17 +17,17 @@ export default function Navbar() {
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item  ">
-                
-                  <Link to="/login">
-                    <Span class={"text-info m-1 text-lg font-weight-bold"} name={'login'}/>
-                  </Link>
-                  <>
-                    <Link to="/login">
+                 {login.isLogged || localStorage.getItem('token')?( <>
+                  <Span class={" m-1 text-lg font-weight-bold"} name={`hello ${login.username}`}/>
+                    <Link to="/logout">
+
                       <Span class={"text-info m-1 text-lg font-weight-bold"} name={'Logout'}/>
                     </Link>
                     <Span class={"text-info m-1 text-lg font-weight-bold "} />   
-                  </>
-                  
+                  </>):( <Link to="/login">
+                    <Span class={"text-info m-1 text-lg font-weight-bold"} name={'login'}/>
+                  </Link>)}
+
                 </li>
              </ul>
         </nav>
