@@ -18,10 +18,11 @@ export const LOGIN = (body) => async (dispatch) => {
     
     const response = await axios.post("http://localhost:8000/user/login",body);
     if(response.status ==200){
-      console.log('yes ');
+      // console.log('yes ');
       if(response.data.role=='admin'){
-      window.localStorage.setItem('token',response.data.token)
-      window.localStorage.setItem('username',response.data.username)
+        // console.log(response.data);
+      window.localStorage.setItem('token',response.data.token);
+      window.localStorage.setItem('username',response.data.username);
         dispatch({
           type: TYPES.LOGIN,
           payload: {isLogged:true,isAdmin:true,username:response.data.username},

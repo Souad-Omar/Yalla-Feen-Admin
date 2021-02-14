@@ -82,7 +82,7 @@ export default function Login(props) {
    await dispatch(ACTIONS.LOGIN(body));
     
     if(!localStorage.getItem('token')) {
-      setisAdmin("Sorry this page is for admin stuff")
+      setisAdmin("You must enter email and password for admin staff")
     }else{
       props.history.push("/home");
     }
