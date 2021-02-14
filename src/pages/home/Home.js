@@ -16,6 +16,8 @@ axios.interceptors.request.use(function (config) {
 
 
 export default function Home() {
+
+    // const data = ['users','places','tags']
     const [places, setplaces] = useState([])
     const handleEdit = (item) => () => {
       // write your logic
@@ -40,7 +42,7 @@ export default function Home() {
     }
     const getPlaces = ()=>axios.get("http://localhost:8000/place/list").then(
       res => {
-        console.log(res.data.data)
+        console.log(res.data.data[0].owner.username)
         setplaces(res.data.data)
         
       }

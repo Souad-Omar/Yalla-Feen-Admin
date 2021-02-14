@@ -48,7 +48,7 @@ export default function Routes() {
 
   const PrivateRouter = (props)=>{
     return <Route path={props.path} render={data=>(
-               login.isLogged===true||localStorage.getItem('token')
+               login.isLogged===true
                ?<props.component {...data}></props.component>
                :<Redirect to={{pathname:"/login"}}/>)}/>
  }

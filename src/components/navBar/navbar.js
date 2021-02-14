@@ -17,7 +17,7 @@ export default function Navbar() {
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item  ">
-                 {login.isLogged || localStorage.getItem('token')?( <>
+                 {login.isLogged?( <>
                   <Span class={" m-1 text-lg font-weight-bold"} name={`hello ${login.username}`}/>
                     <Link to="/logout">
 

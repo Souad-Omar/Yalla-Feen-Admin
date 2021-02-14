@@ -21,6 +21,7 @@ export const LOGIN = (body) => async (dispatch) => {
       console.log('yes ');
       if(response.data.role=='admin'){
       window.localStorage.setItem('token',response.data.token)
+      window.localStorage.setItem('username',response.data.username)
         dispatch({
           type: TYPES.LOGIN,
           payload: {isLogged:true,isAdmin:true,username:response.data.username},
