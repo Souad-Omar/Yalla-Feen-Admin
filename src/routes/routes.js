@@ -9,6 +9,10 @@ const Home = lazy(()=> import('../pages/home/Home'));
 const User = lazy(()=> import('../pages/user/UserHome'));
 const Place = lazy(()=> import('../pages/place/PlaceHome'));
 const Category = lazy(()=> import('../pages/category/CategoryHome'));
+const Tags = lazy(()=> import('../pages/tags/TagsHome'));
+const Comments = lazy(()=> import('../pages/comments/CommentsHome'));
+const Message = lazy(()=> import('../pages/message/MessageHome'));
+const Advertise = lazy(()=> import('../pages/advertise/AdvertiseHome'));
 
 
 const authentication = {
@@ -59,6 +63,10 @@ export default function Routes() {
                 <PrivateRouter  path="/users"  component={User}/>
                 <PrivateRouter  path="/places"  component={Place}/>
                 <PrivateRouter  path="/categories"  component={Category}/>
+                <PrivateRouter  path="/tags"  component={Tags}/>
+                <PrivateRouter  path="/comments"  component={Comments}/>
+                <PrivateRouter  path="/messages"  component={Message}/>
+                <PrivateRouter  path="/advertises"  component={Advertise}/>
           </Suspense>
       </div>
     </>

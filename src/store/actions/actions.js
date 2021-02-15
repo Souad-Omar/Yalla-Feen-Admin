@@ -16,7 +16,7 @@ export const GET_ALL_CATEGORY = () => async (dispatch) => {
 export const LOGIN = (body) => async (dispatch) => {
   try {
     
-    const response = await axios.post("http://localhost:8000/user/login",body);
+    const response = await axios.post("http://localhost:3000/user/login",body);
     if(response.status ==200){
       // console.log('yes ');
       if(response.data.role=='admin'){
@@ -24,7 +24,7 @@ export const LOGIN = (body) => async (dispatch) => {
       window.localStorage.setItem('token',response.data.token);
       window.localStorage.setItem('username',response.data.username);
         dispatch({
-          type: TYPES.LOGIN,
+          type: TYPES.LOGIN, 
           payload: {isLogged:true,isAdmin:true,username:response.data.username},
         });
     }

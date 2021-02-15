@@ -20,38 +20,38 @@ export default function Home() {
 
     // const data = ['users','places','tags']
     const [places, setplaces] = useState([])
-    const handleEdit = (item) => () => {
-      // write your logic
+    // const handleEdit = (item) => () => {
+    //   // write your logic
      
      
-    }
-    const handleDelete = (item) => () => {
-      // write your logic
-      alert("Delete")
-      console.log(item);
-      console.log(item._id);
-      axios.delete(`http://localhost:8000/place/delete/${item._id}`).then(
-        res => {
-          console.log(res);
-          console.log("deleteeeeeeeeeed");
+    // }
+    // const handleDelete = (item) => () => {
+    //   // write your logic
+    //   alert("Delete")
+    //   console.log(item);
+    //   console.log(item._id);
+    //   axios.delete(`http://localhost:3000/place/delete/${item._id}`).then(
+    //     res => {
+    //       console.log(res);
+    //       console.log("deleteeeeeeeeeed");
          
           
-        }
-      ).catch(err => {
-        console.log(err);
-      });
-    }
-    const getPlaces = ()=>axios.get("http://localhost:8000/place/need-approve").then(
-      res => {
-        console.log(res.data.data[0].owner.username)
-        setplaces(res.data.data)
+    //     }
+    //   ).catch(err => {
+    //     console.log(err);
+    //   });
+    // }
+    // const getPlaces = ()=>axios.get("http://localhost:3000/place/need-approve").then(
+    //   res => {
+    //     console.log(res.data.data[0].owner.username)
+    //     setplaces(res.data.data)
         
-      }
-    )
-    const models = ['Users','Categories','Places','Advertises','Messages','Comments']
+    //   }
+    // )
+    const models = ['Users','Categories','Places','Advertises','Messages','Comments','Tags']
     useEffect(async () => {
-      axios.get("http://localhost:8000/place/need-approve").then(response => {
-        console.log(response.data.data);
+      axios.get("http://localhost:3000/place/need-approve").then(response => {
+        // console.log(response.data.data);
         setplaces(response.data.data)
       })
       
