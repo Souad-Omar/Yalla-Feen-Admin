@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 const Login = lazy(()=> import('../pages/auth/login'));
 const Logout = lazy(()=> import('../pages/auth/logout'));
 const Home = lazy(()=> import('../pages/home/Home'));
+const User = lazy(()=> import('../pages/user/UserHome'));
+const Place = lazy(()=> import('../pages/place/PlaceHome'));
+const Category = lazy(()=> import('../pages/category/CategoryHome'));
 
 
 const authentication = {
@@ -53,6 +56,9 @@ export default function Routes() {
                 <Route  path="/logout" exact component={Logout}/>
                 <PrivateRouter  path="/home"  component={Home}/>
                 <PrivateRouter  path="/"  component={Home}/>
+                <PrivateRouter  path="/users"  component={User}/>
+                <PrivateRouter  path="/places"  component={Place}/>
+                <PrivateRouter  path="/categories"  component={Category}/>
           </Suspense>
       </div>
     </>

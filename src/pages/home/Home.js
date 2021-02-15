@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import {useState,useEffect} from 'react'
 import axios from 'axios'
 import  Table from "../../components/Table/index";
 import { tableConstants } from "../../components/Table/tableConstant";
+import { Link } from 'react-router-dom';
 
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
@@ -40,22 +41,38 @@ export default function Home() {
         console.log(err);
       });
     }
-    const getPlaces = ()=>axios.get("http://localhost:8000/place/list").then(
+    const getPlaces = ()=>axios.get("http://localhost:8000/place/need-approve").then(
       res => {
         console.log(res.data.data[0].owner.username)
         setplaces(res.data.data)
         
       }
     )
+    const models = ['Users','Categories','Places','Advertises','Messages','Comments']
+    useEffect(async () => {
+      axios.get("http://localhost:8000/place/need-approve").then(response => {
+        console.log(response.data.data);
+        setplaces(response.data.data)
+      })
+      
+    }, [])
    
   return (
-    <div className={"row"}>
+    <div className={"row mt-5"}>
       <div className={"col-md-9 border"}>
-        <h2>Places Models</h2>
+        <h2>Models</h2>
+        {models.map(model=> <>
+              <div className={"list-group"}>
+              <a  class="list-group-item list-group-item-action m-1">
+                    <Link to={model}>
+                      <span className={"text-info font-weight-bold"}> {model} </span>
+                    </Link>
+              </a>
+              </div>
+             </>)}
+        {/* <Table cols={tableConstants(handleEdit,handleDelete)} data={places} /> */}
 
-        <Table cols={tableConstants(handleEdit,handleDelete)} data={places} />
-
-         <button onClick={()=>{getPlaces()}}>get places</button>
+         {/* <button onClick={()=>{getPlaces()}}>get places</button> */}
         {/* {places.map(item =>
         <>
           <h2>{item.title}</h2>
@@ -63,7 +80,11 @@ export default function Home() {
         )}     */}
       </div>
       <div className={"col-md-3"}>
-            test
+            {places.map(place=> <>
+              <div className={"border m-1"}>
+                  {place.title}
+              </div>
+             </>)}
       </div>
     </div>
   )

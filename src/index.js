@@ -5,6 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from 'react-redux';
 import store from './store/store';
+import axios from 'axios'
+
+axios.interceptors.request.use(function (config) {
+  // Do something before request is sent
+  config.headers['x-access-token'] =localStorage.getItem('token');
+  // console.log(config);
+  return config;
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
