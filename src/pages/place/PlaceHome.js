@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 export default function PlaceHome() {
   const [places, setplaces] = useState([])
     useEffect(() => {
-     axios.get('http://127.0.0.1:8000/place/list').then(response =>{
+     axios.get('http://127.0.0.1:3000/place/list').then(response =>{
        console.log(response);
        setplaces(response.data.data)
       })

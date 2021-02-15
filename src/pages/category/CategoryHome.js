@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 export default function CategoryHome() {
   const [categories, setcategories] = useState([])
     useEffect(() => {
-     axios.get('http://127.0.0.1:8000/category/list').then(response =>{
+     axios.get('http://127.0.0.1:3000/category/list').then(response =>{
        console.log(response);
        setcategories(response.data.data)
       })

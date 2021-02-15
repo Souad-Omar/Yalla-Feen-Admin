@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 export default function UserHome() {
   const [users, setusers] = useState([])
     useEffect(() => {
-     axios.get('http://127.0.0.1:8000/user/list').then(response =>{
+     axios.get('http://127.0.0.1:3000/user/list').then(response =>{
        console.log(response);
        setusers(response.data.usersData)
       })
