@@ -1,0 +1,50 @@
+.material-checkbox {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.material-checkbox .fake-checkbox {
+    --side-length: 1.5em;
+    width: var(--side-length);
+    height: var(--side-length);
+    position: relative;
+    margin-right: 0.6em;
+    border-radius: 0.2em;
+
+}
+
+.material-checkbox .fake-checkbox.checked {
+    background-color: var(--orange-red);
+}
+
+.material-checkbox .fake-checkbox.checked:after {
+    content: "";
+    background-color: white;
+    width: 0.1em;
+    height: 0.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% + 0.1em), calc(-50% + 0em)) rotate(50deg);
+}
+
+.material-checkbox .fake-checkbox.checked:before {
+    content: "";
+    background-color: white;
+    width: 0.1em;
+    height: 0.35em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% + -0.27em), calc(-50% + 0.1em)) rotate(-40deg);
+}
+
+.material-checkbox input {
+    display: none;
+}
+
+.material-checkbox label {
+    font-size: 1.25em;
+    margin-bottom: 0;
+}
