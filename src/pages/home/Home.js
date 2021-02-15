@@ -63,11 +63,11 @@ export default function Home() {
         <h2>Models</h2>
         {models.map(model=> <>
               <div className={"list-group"}>
-              <a  class="list-group-item list-group-item-action m-1">
-                    <Link to={model}>
-                      <span className={"text-info font-weight-bold"}> {model} </span>
-                    </Link>
-              </a>
+                <a  className={"list-group-item list-group-item-action m-1"}>
+                      <Link to={model}>
+                        <span className={"text-info font-weight-bold"}> {model} </span>
+                      </Link>
+                </a>
               </div>
              </>)}
         {/* <Table cols={tableConstants(handleEdit,handleDelete)} data={places} /> */}

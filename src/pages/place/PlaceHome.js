@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,8 +19,10 @@ export default function PlaceHome() {
         <h2>placeData</h2>
         {places.map(place=> <>
               <div className={"list-group"}>
-              <a href="#" class="list-group-item list-group-item-action m-1">
-                  <span className={"text-info font-weight-bold"}>{place.title}</span>
+              <a  className="list-group-item list-group-item-action m-1">
+                <Link to={`/places/${place._id}`}>
+                        <span className={"text-info font-weight-bold"}> {place.title} </span>
+                </Link>
               </a>
               </div>
              </>)}

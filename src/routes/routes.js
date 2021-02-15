@@ -7,8 +7,11 @@ const Login = lazy(()=> import('../pages/auth/login'));
 const Logout = lazy(()=> import('../pages/auth/logout'));
 const Home = lazy(()=> import('../pages/home/Home'));
 const User = lazy(()=> import('../pages/user/UserHome'));
+const ChangeUser = lazy(()=> import('../pages/user/ChangeUser'));
 const Place = lazy(()=> import('../pages/place/PlaceHome'));
+const ChangePlace = lazy(()=> import('../pages/place/ChangePlace'));
 const Category = lazy(()=> import('../pages/category/CategoryHome'));
+const ChangeCategory = lazy(()=> import('../pages/category/ChangeCategory'));
 
 
 const authentication = {
@@ -57,8 +60,11 @@ export default function Routes() {
                 <PrivateRouter  path="/home"  component={Home}/>
                 <PrivateRouter  path="/"  component={Home}/>
                 <PrivateRouter  path="/users"  component={User}/>
+                <PrivateRouter  path="/users/:id"  component={ChangeUser}/>
                 <PrivateRouter  path="/places"  component={Place}/>
+                <PrivateRouter  path="/places/:id"  component={ChangePlace}/>
                 <PrivateRouter  path="/categories"  component={Category}/>
+                <PrivateRouter  path="/categories/:id"  component={ChangeCategory}/>
           </Suspense>
       </div>
     </>

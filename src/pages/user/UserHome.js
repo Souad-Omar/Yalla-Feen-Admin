@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,8 +19,10 @@ export default function UserHome() {
         <h2>UserData</h2>
         {users.map(user=> <>
               <div className={"list-group"}>
-              <a href="#" class="list-group-item list-group-item-action m-1">
-                  <span className={"text-info font-weight-bold"}>{user.username}</span>
+              <a  className="list-group-item list-group-item-action m-1">
+                <Link to={`/users/${user._id}`}>
+                        <span className={"text-info font-weight-bold"}> {user.username} </span>
+                </Link>
               </a>
               </div>
              </>)}
