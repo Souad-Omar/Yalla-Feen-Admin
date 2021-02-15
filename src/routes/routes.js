@@ -11,14 +11,12 @@ const ChangeUser = lazy(()=> import('../pages/user/ChangeUser'));
 const Place = lazy(()=> import('../pages/place/PlaceHome'));
 const ChangePlace = lazy(()=> import('../pages/place/ChangePlace'));
 const Category = lazy(()=> import('../pages/category/CategoryHome'));
-<<<<<<< HEAD
 const ChangeCategory = lazy(()=> import('../pages/category/ChangeCategory'));
-=======
 const Tags = lazy(()=> import('../pages/tags/TagsHome'));
 const Comments = lazy(()=> import('../pages/comments/CommentsHome'));
 const Message = lazy(()=> import('../pages/message/MessageHome'));
 const Advertise = lazy(()=> import('../pages/advertise/AdvertiseHome'));
->>>>>>> a9b100c2990c626ccb0d013e3ceb38c2bcd10cd1
+
 
 
 const authentication = {
