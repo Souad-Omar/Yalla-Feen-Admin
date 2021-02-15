@@ -8,7 +8,7 @@ export default function Changeplace() {
   let { id } = useParams();
   console.log(id)
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/place/details/${id}`).then(response =>{
+    axios.get(`http://127.0.0.1:3000/place/details/${id}`).then(response =>{
       // console.log(response.data);
       if(response.status===200){
         setplaceNotFound(false)

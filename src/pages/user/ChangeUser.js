@@ -8,7 +8,7 @@ export default function ChangeUser() {
   let { id } = useParams();
   console.log(id)
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/user/details/${id}`).then(response =>{
+    axios.get(`http://127.0.0.1:3000/user/details/${id}`).then(response =>{
       // console.log(response.status);
       if(response.status===200){
         setuserNotFound(false)

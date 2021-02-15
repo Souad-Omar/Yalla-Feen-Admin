@@ -8,7 +8,7 @@ export default function Changecategory() {
   let { id } = useParams();
   console.log(id)
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/category/details/${id}`).then(response =>{
+    axios.get(`http://127.0.0.1:3000/category/details/${id}`).then(response =>{
       console.log(response);
       if(response.status===200){
         setcategoryNotFound(false)
