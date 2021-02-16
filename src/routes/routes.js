@@ -57,7 +57,7 @@ export default function Routes() {
  
   return (
     <>
-        <Navbar/>
+        {login.isLogged && <Navbar/>}
      <div className={"container"}>
           <Suspense fallback={<div>loading...</div>}>
                 <Route  path="/login" exact component={Login}/>

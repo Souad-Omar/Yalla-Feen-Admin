@@ -58,7 +58,7 @@ export default function Home() {
     }, [])
    
 
-    const deletePlace = (index,id)=>{
+    const deletePlace = (e,index,id)=>{
       alert('are you sure you want delete this place')
       axios.delete(`http://localhost:3000/place/delete/${id}`).then(
             res => {
@@ -72,7 +72,7 @@ export default function Home() {
           });
     }
 
-    const approve = (index,id)=>{
+    const approve = (e,index,id)=>{
       axios.post(`http://localhost:3000/place/approve/${id}`).then(res=>{
           if(res.status==200){
             setplaces (places.filter((item,j)=> index !== j));
