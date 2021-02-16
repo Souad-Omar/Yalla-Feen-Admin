@@ -6,6 +6,7 @@ import MaterialCheckbox from '../../components/materialCheckbox/materialCheckbox
 import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadioGroup';
 import MaterialButton from '../../components/materialButton/materialButton';
 import MaterialSelect from '../../components/materialSelect/MaterialSelect';
+import MaterialCard from '../../components/card/materialCard';
 
 
 export default function UserHome() {
@@ -20,6 +21,14 @@ export default function UserHome() {
       <div className={'row mt-5'}>
         <div className={'col-6 border'}>
           <h2>UserData</h2>
+          <MaterialCard
+              img=""
+              note="Frontend Developer"
+              title="Ahmed Asim"
+              actionIcon=""
+              actionHandler=""
+              actionType="remove"
+          />
           {users.map(user =>
               <>
                 <div className={'list-group'}>
@@ -43,7 +52,7 @@ export default function UserHome() {
         <div className={'col-6'}>
           <MaterialCheckbox
               name="isactive"
-              label= "Is active"
+              label="Is active"
               value="checked"
           />
           <MaterialInput
@@ -51,7 +60,7 @@ export default function UserHome() {
               label="User name"
               placeholder="Ex: lwalwa"
               isRequired={true}
-              validator={(text) => text.length < 6? "too short at least 6 characters": ""}
+              validator={(text) => text.length < 6 ? 'too short at least 6 characters' : ''}
           />
           <div className="row">
             <div className="col-6">
@@ -84,7 +93,7 @@ export default function UserHome() {
               <MaterialSelect
                   label="City"
                   isRequired={true}
-                  options={["Cairo","Aswan", "Alexandria"]}
+                  options={['Cairo', 'Aswan', 'Alexandria']}
                   noSelectionText="Choose your city"
                   name="city"
                   value="Cairo"
@@ -110,7 +119,7 @@ export default function UserHome() {
             <div className="col-6">
               <MaterialRadioGroup
                   name="userType"
-                  values={["Admin","Client"]}
+                  values={['Admin', 'Client']}
                   header="User type"
                   isRequired={true}
               />
