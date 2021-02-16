@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import MaterialInput from '../../components/materialInput/materialInput';
 import MaterialCheckbox from '../../components/materialCheckbox/materialCheckbox';
+import Table from '../../components/tabel/Table';
 
 
 export default function UserHome() {
@@ -15,10 +16,15 @@ export default function UserHome() {
   }, []);
   return (
       <div className={'row mt-5'}>
-        <div className={'col-6 border'}>
-          <h2>UserData</h2>
+        <div className={'col-6 '}>
+          <h2>User Data</h2>
+          {/* <Table
+            header={['username','firstname', 'lastname','email']}
+            data={users}
+          /> */}
           {users.map(user =>
               <>
+                
                 <div className={'list-group'}>
                   <a className="list-group-item list-group-item-action m-1">
                     <Link to={`/users/${user._id}`}>

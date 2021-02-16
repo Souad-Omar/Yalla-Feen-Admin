@@ -11,7 +11,7 @@ export default function CommentsHome() {
     }, [])
   return (
     <div className={"row mt-5"}>
-      <div className={"col-md-9 border"}>
+      <div className={"col-md-9 "}>
         <h2>CommentsData</h2>
         {comments.map(comment=> <>
               <div className={"list-group"}>

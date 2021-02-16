@@ -11,7 +11,14 @@ export default function Navbar() {
               <ul className="navbar-nav ">
                 <li className="nav-item active">
                 <Link to="/home" >
-                    <Span class={"text-info m-1 text-lg font-weight-bold"} name={"Yalla-Feen administration"}/>
+                    <Span 
+                          class={"text-info m-1 text-lg font-weight-bold"}
+                          name={"Yalla-Feen administration"}/>
+                </Link>
+                <Link to="/report" >
+                    <Span 
+                          class={"text-info m-1 text-lg font-weight-bold"}
+                          name={"Report"}/>
                 </Link>
                 </li>
               </ul>
