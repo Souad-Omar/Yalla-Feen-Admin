@@ -7,6 +7,7 @@ import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadi
 import MaterialButton from '../../components/materialButton/materialButton';
 import MaterialSelect from '../../components/materialSelect/MaterialSelect';
 import MaterialCard from '../../components/card/materialCard';
+import Table from '../../components/tabel/Table';
 
 
 export default function UserHome() {
@@ -29,6 +30,10 @@ export default function UserHome() {
               actionHandler=""
               actionType="remove"
           />
+          {/* <Table
+            header={['username','firstname', 'lastname','email']}
+            data={users}
+          /> */}
           {users.map(user =>
               <>
                 <div className={'list-group'}>
@@ -48,7 +53,6 @@ export default function UserHome() {
         </>
         )}     */}
         </div>
-        
         <div className={'col-6'}>
           <MaterialCheckbox
               name="isactive"
@@ -60,7 +64,7 @@ export default function UserHome() {
               label="User name"
               placeholder="Ex: lwalwa"
               isRequired={true}
-              validator={(text) => text.length < 6 ? 'too short at least 6 characters' : ''}
+              errorMessage={"try another one"}
           />
           <div className="row">
             <div className="col-6">

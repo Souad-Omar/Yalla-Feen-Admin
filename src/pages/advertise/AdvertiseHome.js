@@ -11,7 +11,7 @@ export default function AdvertiseHome() {
     }, [])
   return (
     <div className={"row mt-5"}>
-      <div className={"col-md-9 border"}>
+      <div className={"col-md-9 "}>
         <h2>AdvertiseData</h2>
         {advertises.map(advertise=> <>
               <div className={"list-group"}>

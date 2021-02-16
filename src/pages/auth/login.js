@@ -85,14 +85,15 @@ export default function Login(props) {
       setisAdmin("You must enter email and password for admin staff")
     }else{
       props.history.push("/home");
+      // console.log(body);
     }
   }
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 ">
       <div>
      
         <form className="form-group border p-4">
-        <small className="text-danger" >{isAdmin}</small> 
+        <small className="text-danger font-weight-bold" >{isAdmin}</small> 
         <br/>
           <Input
             value={loginForm.email}

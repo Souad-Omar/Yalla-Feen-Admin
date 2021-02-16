@@ -22,6 +22,8 @@ export default function Changeplace() {
     <>
     {place?<div>
       {place.title}
+      <br/>
+      {place.description}
       </div>
     :
     <h2>place not found</h2>

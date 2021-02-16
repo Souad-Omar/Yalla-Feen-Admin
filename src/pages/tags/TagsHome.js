@@ -11,7 +11,7 @@ export default function TagsHome() {
     }, [])
   return (
     <div className={"row mt-5"}>
-      <div className={"col-md-9 border"}>
+      <div className={"col-md-9 "}>
         <h2>TagsData</h2>
         {tags.map(tag=> <>
               <div className={"list-group"}>
