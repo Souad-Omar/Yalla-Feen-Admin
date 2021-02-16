@@ -28,7 +28,7 @@
     height: var(--diameter);
     border-radius: 50%;
     position: relative;
-    border: 0.1em solid var(--dark-gray);
+    border: 0.1em solid var(--dark-500);
     cursor: pointer;
 
 }

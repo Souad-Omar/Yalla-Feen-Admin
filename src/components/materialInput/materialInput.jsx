@@ -1,14 +1,18 @@
 import React from 'react';
 import './materialInput.css';
 
-const MaterialInput = ({label, name, placeholder, isRequired, errorMessage, type = "text",value =""}) => {
+const MaterialInput = ({label, name, placeholder, validator, isRequired, type = 'text', value = ''}) => {
   const [text, setText] = React.useState(value);
-  const onChangeHandler = (e) =>{
-    setText(e.target.value)
+  const [error, setError] = React.useState('');
+  const onChangeHandler = (e) => {
+    setText(e.target.value);
+  };
+  const onBlurHandler = (e) => {
+    validator && setError(validator(e.target.value))
   }
   return (
       <div className="material-input">
-        <label>{label + (isRequired ? '*' : '')}</label>
+        {label && <label>{label + (isRequired ? '*' : '')}</label>}
         <input type="text"
                name={name}
                placeholder={placeholder}
@@ -16,9 +20,10 @@ const MaterialInput = ({label, name, placeholder, isRequired, errorMessage, type
                type={type}
                value={text}
                onChange={onChangeHandler}
+               onBlur={onBlurHandler}
         />
-        {errorMessage &&
-        <small className="error-message">{errorMessage}</small>}
+        {error &&
+        <small className="error-message">{error}</small>}
       </div>
   );
 };

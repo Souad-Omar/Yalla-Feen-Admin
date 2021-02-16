@@ -19,7 +19,7 @@
     padding-bottom: 0.2em;
 }
 .material-input input::placeholder{
-    color: var(--light-gray);
+    color: var(--gray-400);
 }
 .error-message{
     position: absolute;

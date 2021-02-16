@@ -5,6 +5,7 @@ import MaterialInput from '../../components/materialInput/materialInput';
 import MaterialCheckbox from '../../components/materialCheckbox/materialCheckbox';
 import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadioGroup';
 import MaterialButton from '../../components/materialButton/materialButton';
+import MaterialSelect from '../../components/materialSelect/MaterialSelect';
 
 
 export default function UserHome() {
@@ -38,13 +39,19 @@ export default function UserHome() {
         </>
         )}     */}
         </div>
+        
         <div className={'col-6'}>
+          <MaterialCheckbox
+              name="isactive"
+              label= "Is active"
+              value="checked"
+          />
           <MaterialInput
               name="username"
               label="User name"
               placeholder="Ex: lwalwa"
               isRequired={true}
-              errorMessage={"try another one"}
+              validator={(text) => text.length < 6? "too short at least 6 characters": ""}
           />
           <div className="row">
             <div className="col-6">
@@ -64,12 +71,26 @@ export default function UserHome() {
               />
             </div>
           </div>
-          <MaterialInput
-              name="email"
-              label="E-mail"
-              placeholder="your-email@gmail.com"
-              isRequired={true}
-          />
+          <div className="row">
+            <div className="col-6">
+              <MaterialInput
+                  name="email"
+                  label="E-mail"
+                  placeholder="your-email@gmail.com"
+                  isRequired={true}
+              />
+            </div>
+            <div className="col-6">
+              <MaterialSelect
+                  label="City"
+                  isRequired={true}
+                  options={["Cairo","Aswan", "Alexandria"]}
+                  noSelectionText="Choose your city"
+                  name="city"
+                  value="Cairo"
+              />
+            </div>
+          </div>
           <MaterialInput
               name="password"
               label="Password"
@@ -84,17 +105,18 @@ export default function UserHome() {
               isRequired={true}
               type="password"
           />
-          <MaterialCheckbox
-              name="isactive"
-              label= "Is active"
-              value="checked"
-          />
-          <MaterialRadioGroup
-              name="userType"
-              values={["Admin","Client"]}
-              header="User type"
-              isRequired={true}
-          />
+          
+          <div className="row">
+            <div className="col-6">
+              <MaterialRadioGroup
+                  name="userType"
+                  values={["Admin","Client"]}
+                  header="User type"
+                  isRequired={true}
+              />
+            </div>
+          </div>
+          
           <MaterialButton
               text="Submit!"
               type="submit"
