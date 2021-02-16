@@ -2,6 +2,10 @@ import React from 'react';
 import './materialInput.css';
 
 const MaterialInput = ({label, name, placeholder, isRequired, errorMessage, type = "text",value =""}) => {
+  const [text, setText] = React.useState(value);
+  const onChangeHandler = (e) =>{
+    setText(e.target.value)
+  }
   return (
       <div className="material-input">
         <label>{label + (isRequired ? '*' : '')}</label>
@@ -10,14 +14,11 @@ const MaterialInput = ({label, name, placeholder, isRequired, errorMessage, type
                placeholder={placeholder}
                required={isRequired}
                type={type}
-               value={value}
+               value={text}
+               onChange={onChangeHandler}
         />
-        {
-          errorMessage &&
-          <small className="error-message">
-            {errorMessage}
-          </small>
-        }
+        {errorMessage &&
+        <small className="error-message">{errorMessage}</small>}
       </div>
   );
 };

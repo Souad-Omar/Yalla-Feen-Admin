@@ -1,0 +1,66 @@
+.material-radio-group {
+    display: flex;
+    width: 100%;
+    font-size: 10px;
+    --diameter: 1.5em;
+    flex-wrap: wrap;
+    margin-bottom: 4em;
+}
+.material-radio-group .header{
+    font-size: 1.1em;
+    margin-bottom: 0.8em;
+    flex-basis: 100%;
+}
+.material-radio-group.vertical {
+    flex-direction: column;
+}
+
+.material-radio-group .radio-button-wrapper {
+    margin-right: 4em;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
+.material-radio-group .fake-radio-button {
+    width: var(--diameter);
+    height: var(--diameter);
+    border-radius: 50%;
+    position: relative;
+    border: 0.1em solid var(--dark-gray);
+    cursor: pointer;
+
+}
+
+.material-radio-group .fake-radio-button.checked {
+    border-color: var(--orange-red);
+}
+
+.material-radio-group .fake-radio-button.checked:after {
+    content: "";
+    width: calc(var(--diameter) * 0.65);
+    height: calc(var(--diameter) * 0.65);
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--orange-red);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.material-radio-group input {
+    width: var(--diameter);
+    height: var(--diameter);
+    display: none;
+}
+
+.material-radio-group label {
+    margin-bottom: 0;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding-left: 0.45em;
+}
+
+

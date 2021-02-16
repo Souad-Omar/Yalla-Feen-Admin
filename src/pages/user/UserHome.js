@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import MaterialInput from '../../components/materialInput/materialInput';
 import MaterialCheckbox from '../../components/materialCheckbox/materialCheckbox';
+import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadioGroup';
+import MaterialButton from '../../components/materialButton/materialButton';
 
 
 export default function UserHome() {
@@ -86,6 +88,16 @@ export default function UserHome() {
               name="isactive"
               label= "Is active"
               value="checked"
+          />
+          <MaterialRadioGroup
+              name="userType"
+              values={["Admin","Client"]}
+              header="User type"
+              isRequired={true}
+          />
+          <MaterialButton
+              text="Submit!"
+              type="submit"
           />
         </div>
       </div>

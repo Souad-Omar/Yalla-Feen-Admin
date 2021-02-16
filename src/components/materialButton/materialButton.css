@@ -1,0 +1,23 @@
+.material-button {
+    color: white;
+    background-color: var(--dark-main);
+    outline: none;
+    border: none;
+    min-width: 140px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    display: block;
+}
+
+.material-button.right {
+    margin-left: auto;
+}
+
+.material-button.left {
+    margin-right: auto;
+}
+
+.material-button.center {
+    margin-right: auto;
+    margin-left: auto;
+}
