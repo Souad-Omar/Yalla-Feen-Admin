@@ -6,18 +6,28 @@ import Table from "../../components/tabel/Table";
 
 export default function Report() {
   const [Users, setUsers] = useState([]);
+  const [activeUsers, setActiveUsers] = useState([]);
   const [Places, setPlaces] = useState([])
+  const [approvedPlaces, setApprovedPlaces] = useState([])
   const [topPlaces, setTopPlaces] = useState([])
   useEffect(() => {
     axios.get('http://127.0.0.1:3000/user/aggregate').then(response=>{
       const aggre = response.data.userCountGraph;
       const aggre2 = response.data.placeCountGraph;
+      const aggre3 = response.data.approvedPlaces;
+      const aggre4 = response.data.activeUsers;
       let items = [];
       let items2 = [];
+      let items3 = [];
+      let items4 = [];
       aggre.map(item=>{items.push([item._id,item.total])})
       aggre2.map(item=>{items2.push([item._id,item.total])})
+      aggre3.map(item=>{items3.push([`${item._id?'True':'False'}`,item.total])})
+      aggre4.map(item=>{items4.push([`${item._id?'True':'False'}`,item.total])})
       setUsers(items)
+      setActiveUsers(items4)
       setPlaces(items2)
+      setApprovedPlaces(items3)
       setTopPlaces(response.data.topPlaces)
       
     })
@@ -48,10 +58,9 @@ export default function Report() {
             },
             colors:['#8bc9e0'],
             backgroundColor:[''],
-          
             
           }}
-          // For test
+         
         />
         <Chart
           width={'500px'}
@@ -74,7 +83,36 @@ export default function Report() {
         />
     </div>
     <div style={{ display: 'flex' }}>
-     
+    <Chart
+        width={'600px'}
+        height={'400px'}
+        chartType="PieChart"
+        loader={<div>Loading Chart</div>}
+        data={[
+          ['Users', '#Actives'],
+          ...activeUsers
+        ]}
+        options={{
+          title: 'Active Users',
+          sliceVisibilityThreshold: 0.2, // 20%
+        }}
+       
+      />
+    <Chart
+        width={'600px'}
+        height={'400px'}
+        chartType="PieChart"
+        loader={<div>Loading Chart</div>}
+        data={[
+          ['Places', 'Approved'],
+          ...approvedPlaces
+        ]}
+        options={{
+          title: 'Places are Approved',
+          sliceVisibilityThreshold: 0.2, // 20%
+        }}
+       
+      />
     </div>
     </>
   )

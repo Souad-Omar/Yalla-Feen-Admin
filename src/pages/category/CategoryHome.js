@@ -19,6 +19,7 @@ export default function CategoryHome() {
       <div className={"col-md-9 "}>
         <h2>CategoryData</h2>
         <Table
+          action ={true}
           header={['title','description']}
           data={categories}
         />
