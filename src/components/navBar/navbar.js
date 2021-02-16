@@ -27,7 +27,6 @@ export default function Navbar() {
                  {login.isLogged?( <>
                   <Span class={" m-1 text-lg font-weight-bold"} name={`hello ${login.username}`}/>
                     <Link to="/logout">
-
                       <Span class={"text-info m-1 text-lg font-weight-bold"} name={'Logout'}/>
                     </Link>
                     <Span class={"text-info m-1 text-lg font-weight-bold "} />   

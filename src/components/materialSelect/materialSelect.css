@@ -1,5 +1,6 @@
 .material-select{
     --the-magic-number: 2px;
+    margin-bottom: 40px;
     font-size: 10px;
     cursor: pointer;
     user-select: none;
@@ -24,6 +25,8 @@
 
 .material-select .options{
     position: absolute;
+    max-height: 100px;
+    overflow-y: auto;
     top:100%;
     left: var(--the-magic-number);
     width: calc(100% - 2*var(--the-magic-number));

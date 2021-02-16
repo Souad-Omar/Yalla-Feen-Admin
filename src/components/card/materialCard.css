@@ -18,6 +18,7 @@
 .material-card .image-wrapper {
     flex-basis: 80px;
     height: 80px;
+    flex-shrink: 0px;
     background-color: wheat;
     border-radius: 50%;
     overflow: hidden;
@@ -36,6 +37,9 @@
 
 .material-card .info {
     margin-right: auto;
+    max-width: 50%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .material-card .title {

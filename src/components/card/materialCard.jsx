@@ -1,7 +1,7 @@
 import React from 'react';
 import './materialCard.css';
 
-const MaterialCard = ({img, title, note, clickHandler, actionType, actionHandler, highlight = false}) => {
+const MaterialCard = ({img, title, note, clickHandler, actions=[], highlight = false}) => {
   return (
       <div className={`material-card${highlight ? ' highlighted' : ''}`} onClick={clickHandler}>
         <div className="image-wrapper">
@@ -11,12 +11,19 @@ const MaterialCard = ({img, title, note, clickHandler, actionType, actionHandler
           <div className="title">{title}</div>
           <div className="note">{note}</div>
         </div>
-        <div className="action-wrapper">
+        {/* <div className="action-wrapper">
           <div className="action-type"
                onClick={actionHandler}
                data-type={actionType}
           >{actionType}</div>
-        </div>
+        </div> */}
+        {actions.map(action=>
+        <div className="action-wrapper">
+          <div className="action-type"
+               onClick={action.handler}
+               data-type={action.type}
+          >{action.type}</div>
+        </div>)}
         <div className="dot"></div>
       </div>
   );
