@@ -4,7 +4,7 @@ export default function Button(props) {
   return (
    <button 
           className={props.class}
-          onClick={(e)=> props.onButtonClick(e)}        
+          onClick={(e)=> props.onButtonClick(props.index,props.id)}        
    >{props.name}</button>
   )
 }
