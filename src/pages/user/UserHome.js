@@ -1,12 +1,7 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import MaterialInput from '../../components/materialInput/materialInput';
-import MaterialCheckbox from '../../components/materialCheckbox/materialCheckbox';
-import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadioGroup';
-import MaterialButton from '../../components/materialButton/materialButton';
-import MaterialSelect from '../../components/materialSelect/MaterialSelect';
 import MaterialCard from '../../components/card/materialCard';
+import SectionHeader from '../../components/sectionHeader/sectionHeader';
 
 
 export default function UserHome() {
@@ -48,7 +43,10 @@ export default function UserHome() {
   return (
       <div className={'row mt-5'}>
         <div className={'col-9 magic'}>
-          <h2>UserData</h2>
+          <SectionHeader
+              text="Users"
+              position="center"
+          />
          { users.map((user,index)=>
            <MaterialCard
               img={user.avatar}
@@ -72,7 +70,7 @@ export default function UserHome() {
               label="User name"
               placeholder="Ex: lwalwa"
               isRequired={true}
-              errorMessage={"try another one"}
+              validator={text => text.length<6? "name must be at least 6 characters":""}
           />
           <div className="row">
             <div className="col-6">
