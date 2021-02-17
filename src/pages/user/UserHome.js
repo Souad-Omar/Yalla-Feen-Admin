@@ -7,53 +7,61 @@ import MaterialRadioGroup from '../../components/materialRadioGroup/materialRadi
 import MaterialButton from '../../components/materialButton/materialButton';
 import MaterialSelect from '../../components/materialSelect/MaterialSelect';
 import MaterialCard from '../../components/card/materialCard';
-import Table from '../../components/tabel/Table';
 
 
 export default function UserHome() {
   const [users, setusers] = useState([]);
+  // on load page
   useEffect(() => {
     axios.get('http://127.0.0.1:3000/user/list').then(response => {
-      console.log(response);
+      
       setusers(response.data.usersData);
     });
   }, []);
+  // component logic
+  // const addUser = ()=>{
+  //   console.log(document.getElementsByName('username')[0].value);
+  // }
+  const deleteUser =(index,id)=>()=>{
+    alert('you will delete user')
+    axios.delete(`http://127.0.0.1:3000/user/delete/${id}`).then(response=>{
+
+      setusers(users.filter((item,j)=> index !== j))
+      
+    })}
+
+    const panUser =(index,id)=>()=>{
+      alert('you will pan user')
+      axios.put(`http://127.0.0.1:3000/user/pan/${id}`).then(response=>{
+
+        setusers(users.filter((item,j)=> {
+          if(index == j){
+            item.isactive = !item.isactive
+          }
+        return true
+        })
+          )
+          
+      });
+    } 
+  
   return (
       <div className={'row mt-5'}>
-        <div className={'col-6 border'}>
+        <div className={'col-9 magic'}>
           <h2>UserData</h2>
-          <MaterialCard
-              img=""
-              note="Frontend Developer"
-              title="Ahmed Asim"
-              actionIcon=""
-              actionHandler=""
-              actionType="remove"
-          />
-          {/* <Table
-            header={['username','firstname', 'lastname','email']}
-            data={users}
-          /> */}
-          {users.map(user =>
-              <>
-                <div className={'list-group'}>
-                  <a className="list-group-item list-group-item-action m-1">
-                    <Link to={`/users/${user._id}`}>
-                      <span className={'text-info font-weight-bold'}> {user.username} </span>
-                    </Link>
-                  </a>
-                </div>
-              </>)}
-          {/* <Table cols={tableConstants(handleEdit,handleDelete)} data={places} /> */}
-          
-          {/* <button onClick={()=>{getPlaces()}}>get places</button> */}
-          {/* {places.map(item =>
-        <>
-          <h2>{item.title}</h2>
-        </>
-        )}     */}
+         { users.map((user,index)=>
+           <MaterialCard
+              img={user.avatar}
+              note={user.email}
+              title={user.username}
+              actions={[
+              { handler: deleteUser(index, user._id), type: "Remove" },
+              { handler: panUser(index,user._id), type: (user.isactive)?"Pan":"Unpan" },
+            ]}
+              
+          />)}
         </div>
-        <div className={'col-6'}>
+        {/* <div className={'col-6'}>
           <MaterialCheckbox
               name="isactive"
               label="Is active"
@@ -133,8 +141,9 @@ export default function UserHome() {
           <MaterialButton
               text="Submit!"
               type="submit"
+              onClickHandler={addUser}
           />
-        </div>
+        </div> */}
       </div>
   );
 }

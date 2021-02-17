@@ -10,6 +10,7 @@ export default function Report() {
   const [Places, setPlaces] = useState([])
   const [approvedPlaces, setApprovedPlaces] = useState([])
   const [topPlaces, setTopPlaces] = useState([])
+  const [counts, setCounts] = useState({})
   useEffect(() => {
     axios.get('http://127.0.0.1:3000/user/aggregate').then(response=>{
       const aggre = response.data.userCountGraph;
@@ -29,12 +30,23 @@ export default function Report() {
       setPlaces(items2)
       setApprovedPlaces(items3)
       setTopPlaces(response.data.topPlaces)
+      setCounts(response.data.counts)
+      // console.log(response.data.counts);
+      console.log(counts);
       
     })
   }, [])
   
   return (
     <>
+    <div className={"row m-3"}>
+      <div className={"col-6"}>
+        <h2>#Users: {counts.countUsers}</h2>
+      </div>
+      <div className={"col-6"}>
+        <h2>#Places: {counts.countPlaces}</h2>
+      </div>
+    </div>
     <h2>Top Places</h2>
     <Table
           action={false}

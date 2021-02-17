@@ -11,7 +11,7 @@ export default function MessageHome() {
     }, [])
   return (
     <div className={"row mt-5"}>
-      <div className={"col-md-9 border"}>
+      <div className={"col-md-9 "}>
         <h2>MessageData</h2>
         {messages.map(message=> <>
               <div className={"list-group"}>
