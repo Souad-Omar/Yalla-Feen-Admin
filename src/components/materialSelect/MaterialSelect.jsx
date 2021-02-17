@@ -1,8 +1,8 @@
 import './materialSelect.css';
 import React from 'react';
 
-const MaterialSelect = ({options = [], name, label, isRequired, noSelectionText, value = ''}) => {
-  const [selectedValue, setSelectedValue] = React.useState(value);
+const MaterialSelect = ({options = [], name, label, isRequired, noSelectionText, value = '',onChangeHandler}) => {
+  // const [selectedValue, setSelectedValue] = React.useState(value);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const onClickHandler = (e) => {
     const type = e.target.dataset.type;
@@ -11,8 +11,9 @@ const MaterialSelect = ({options = [], name, label, isRequired, noSelectionText,
         setIsExpanded(!isExpanded)
         break;
       case "option":
+        onChangeHandler(e.target.dataset.value)
         setIsExpanded(false);
-        setSelectedValue(e.target.dataset.value);
+        // setSelectedValue(e.target.dataset.value);
         break;
     }
   };
@@ -24,15 +25,15 @@ const MaterialSelect = ({options = [], name, label, isRequired, noSelectionText,
         <div className="fake-select">
           <div className="selected-option"
                data-type = "select"
-               data-value={selectedValue}
-          >{selectedValue || noSelectionText}</div>
+               data-value={value}
+          >{value || noSelectionText}</div>
           <div className="options">
-            {options.map(option => <div key={option} className={`option${option === selectedValue ? ' selected' : ''}`} data-type = "option" data-value={option}>{option}</div>)}
+            {options.map(option => <div key={option} className={`option${option === value ? ' selected' : ''}`} data-type = "option" data-value={option}>{option}</div>)}
           </div>
           <div className={`arrow`}></div>
         </div>
         
-        <select name={name} value={selectedValue} >
+        <select name={name} value={value} >
           <option value="">{noSelectionText}</option>
           {options.map(option => <option key={option} value={option}>{option}</option>)}
         </select>

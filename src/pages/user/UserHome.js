@@ -18,7 +18,7 @@ export default function UserHome() {
   //   console.log(document.getElementsByName('username')[0].value);
   // }
   const deleteUser =(index,id)=>()=>{
-    alert('you will delete user')
+    if(window.confirm('Are you sure you want this action'))
     axios.delete(`http://127.0.0.1:3000/user/delete/${id}`).then(response=>{
 
       setusers(users.filter((item,j)=> index !== j))
@@ -26,7 +26,7 @@ export default function UserHome() {
     })}
 
     const panUser =(index,id)=>()=>{
-      alert('you will pan user')
+      if(window.confirm('Are you sure you want this action'))
       axios.put(`http://127.0.0.1:3000/user/pan/${id}`).then(response=>{
 
         setusers(users.filter((item,j)=> {

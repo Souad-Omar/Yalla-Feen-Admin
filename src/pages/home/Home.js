@@ -20,39 +20,13 @@ axios.interceptors.request.use(function (config) {
 
 export default function Home() {
 
-    // const data = ['users','places','tags']
+  
     const [places, setplaces] = useState([])
-    // const handleEdit = (item) => () => {
-    //   // write your logic
-     
-     
-    // }
-    // const handleDelete = (item) => () => {
-    //   // write your logic
-    //   alert("Delete")
-    //   console.log(item);
-    //   console.log(item._id);
-    //   axios.delete(`http://localhost:3000/place/delete/${item._id}`).then(
-    //     res => {
-    //       console.log(res);
-    //       console.log("deleteeeeeeeeeed");
-         
-          
-    //     }
-    //   ).catch(err => {
-    //     console.log(err);
-    //   });
-    // const getPlaces = ()=>axios.get("http://localhost:3000/place/need-approve").then(
-    //   res => {
-    //     console.log(res.data.data[0].owner.username)
-    //     setplaces(res.data.data)
-        
-    //   }
-    // )
+    
     const models = ['Users','Categories','Places','Advertises','Messages','Comments','Tags']
     useEffect(async () => {
       axios.get("http://localhost:3000/place/need-approve").then(response => {
-        // console.log(response.data.data);
+       
         setplaces(response.data.data)
       })
       
@@ -60,7 +34,7 @@ export default function Home() {
    
 
     const deletePlace = (index, id)=>(e)=>{
-      alert('are you sure you want delete this place')
+      if(window.confirm('Are you sure you want this action'))
       axios.delete(`http://localhost:3000/place/delete/${id}`).then(
             res => {
               setplaces (places.filter((item,j)=> index !== j))
@@ -69,11 +43,12 @@ export default function Home() {
 
             }
           ).catch(err => {
-            console.log(err);
+            // console.log(err);
           });
     }
 
     const approve = (index,id)=>(e)=>{
+      if(window.confirm('Are you sure you want this action'))
       axios.post(`http://localhost:3000/place/approve/${id}`).then(res=>{
           if(res.status==200){
             setplaces (places.filter((item,j)=> index !== j));
@@ -81,7 +56,7 @@ export default function Home() {
       }).catch(err => { console.log(err);});
       
       
-      console.log('approve clicked ');
+      // console.log('approve clicked ');
     }
     // const confirm = confirm('are you sure you want delete this place')
     // console.log(confirm);
