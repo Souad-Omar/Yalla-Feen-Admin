@@ -7,6 +7,7 @@ const Login = lazy(()=> import('../pages/auth/login'));
 const Logout = lazy(()=> import('../pages/auth/logout'));
 const Home = lazy(()=> import('../pages/home/Home'));
 const Report = lazy(()=> import('../pages/report/Report'));
+const PlacesMap = lazy(()=> import('../pages/map/MapPlaces'));
 const User = lazy(()=> import('../pages/user/UserHome'));
 const ChangeUser = lazy(()=> import('../pages/user/ChangeUser'));
 const Place = lazy(()=> import('../pages/place/PlaceHome'));
@@ -66,6 +67,7 @@ export default function Routes() {
                 <PrivateRouter  path="/"  component={Home}/>
                 <PrivateRouter  path="/home"  component={Home}/>
                 <PrivateRouter  path="/report"  component={Report}/>
+                <PrivateRouter  path="/places-map"  component={PlacesMap}/>
                 <PrivateRouter  path="/users"  component={User}/>
                 <PrivateRouter  path="/users/:id"  component={ChangeUser}/>
                 <PrivateRouter  path="/places"  component={Place}/>

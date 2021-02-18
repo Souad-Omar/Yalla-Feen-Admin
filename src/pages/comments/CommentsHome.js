@@ -1,5 +1,7 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
+import MaterialCard from '../../components/card/materialCard'
+import SectionHeader from '../../components/sectionHeader/sectionHeader'
 
 export default function CommentsHome() {
   const [comments, setComments] = useState([])
@@ -10,21 +12,25 @@ export default function CommentsHome() {
       })
     }, [])
   return (
-    <div className={"row mt-5"}>
-      <div className={"col-md-9 "}>
-        <h2>CommentsData</h2>
-        {comments.map(comment=> <>
-              <div className={"list-group"}>
-              <a href="#" class="list-group-item list-group-item-action m-1">
-                  <span className={"text-info font-weight-bold"}>{comment.text}</span>
-              </a>
-              </div>
-             </>)}
-       
-      </div>
-      <div className={"col-md-3"}>
+    <div className={'row mt-5'}>
+    <div className={'col-6 magic'}>
+      <SectionHeader
+          text="Comments"
+          position="center"
+      />
+    { comments.map((comment,index)=>
+      <MaterialCard
+          key={index}
+          note={comment.name}
+          title={comment.text}
+          actions={[
+          { handler: undefined, type: "Delete" },
+          { handler: undefined, type: "Edit" },
+        ]}
           
-      </div>
+      />)}
     </div>
+  </div>
+   
   )
 }

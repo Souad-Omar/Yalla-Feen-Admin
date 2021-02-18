@@ -15,6 +15,11 @@ export default function Navbar() {
                           class={"text-info m-1 text-lg font-weight-bold"}
                           name={"Yalla-Feen administration"}/>
                 </Link>
+                <Link to="/places-map" >
+                    <Span 
+                          class={"text-info m-1 text-lg font-weight-bold"}
+                          name={"Places Map"}/>
+                </Link>
                 <Link to="/report" >
                     <Span 
                           class={"text-info m-1 text-lg font-weight-bold"}

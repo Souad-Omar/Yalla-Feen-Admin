@@ -1,7 +1,8 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
-import { Link } from 'react-router-dom'
-import Table from '../../components/tabel/Table'
+import MaterialCard from '../../components/card/materialCard'
+import SectionHeader from '../../components/sectionHeader/sectionHeader'
+
 
 
 
@@ -15,27 +16,23 @@ export default function CategoryHome() {
       })
     }, [])
   return (
-    <div className={"row mt-5"}>
-      <div className={"col-md-9 "}>
-        <h2>CategoryData</h2>
-        <Table
-          action ={true}
-          header={['title','description']}
-          data={categories}
+    <div className={'row mt-5'}>
+      <div className={'col-6 magic'}>
+        <SectionHeader
+            text="Categories"
+            position="center"
         />
-        {categories.map(category=> <>
-              <div className={"list-group"}>
-              <a  className="list-group-item list-group-item-action m-1">
-                <Link to={`/categories/${category._id}`}>
-                        <span className={"text-info font-weight-bold"}> {category.title} </span>
-                </Link>
-              </a>
-              </div>
-             </>)}
-       
-      </div>
-      <div className={"col-md-3"}>
-          
+      { categories.map((category,index)=>
+        <MaterialCard
+            key={index}
+            note={category.places.length}
+            title={category.title}
+            actions={[
+            { handler: undefined, type: "Delete" },
+            { handler: undefined, type: "Edit" },
+          ]}
+            
+        />)}
       </div>
     </div>
   )
