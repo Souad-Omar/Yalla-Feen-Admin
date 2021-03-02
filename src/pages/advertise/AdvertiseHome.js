@@ -35,7 +35,7 @@ export default function AdvertiseHome() {
     <div className={'row mt-5'}>
     <div className={'col-6 magic'}>
       <SectionHeader
-          text="Custom Advertises"
+          text="Custom-Advertisment"
           position="center"
       />
     { advertises.map((advertise,index)=>
@@ -52,15 +52,15 @@ export default function AdvertiseHome() {
     </div>
     <div className={'col-6 magic'}>
       <SectionHeader
-          text="Places Advertises"
+          text="Places-Advertisment"
           position="center"
       />
     { places.map((place,index)=>
       <MaterialCard
           key={index}
           img={place.images[0]}
-          note={place.owner}
-          title={place.text}
+          title={place.title}
+          note={place.city}
           actions={[
             {handler: manageAd(index,place._id),
              type:(place.isAdvertise)?"removeAd":"addAsAd"}

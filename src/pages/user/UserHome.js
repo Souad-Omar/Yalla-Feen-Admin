@@ -54,7 +54,7 @@ export default function UserHome() {
               title={user.username}
               actions={[
               { handler: deleteUser(index, user._id), type: "Remove" },
-              { handler: panUser(index,user._id), type: (user.isactive)?"Pan":"Unpan" },
+              { handler: panUser(index,user._id), type: (user.isactive)?"Ban":"Unban" },
             ]}
               
           />)}

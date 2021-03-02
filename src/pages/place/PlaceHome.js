@@ -19,7 +19,9 @@ export default function PlaceHome() {
             type: "",
             workStart:"",
             workEnd:"",
-            phone:""
+            phone:"",
+            Latitude:0,
+            Langitude:0
 
           }
   const [currentSelection, setCurrentSelection] = useState(selected)
@@ -49,7 +51,8 @@ export default function PlaceHome() {
   const addPlace=(e)=>{
     e.preventDefault()
     currentSelection.category = currentSelection.category.title;
-    
+    currentSelection.location = [parseFloat(currentSelection.Langitude),
+                                 parseFloat(currentSelection.Latitude)]
     axios
     .post(`http://localhost:3000/place/create`,currentSelection).then(response=>{
       setCurrentSelection(selected)
@@ -59,18 +62,23 @@ export default function PlaceHome() {
   }
   const editPlace=(e)=>{
     e.preventDefault()
-    
+    currentSelection.location ={type:"Point",
+                              coordinates:[currentSelection.Langitude,currentSelection.Latitude]}
     
     axios
     .put(`http://localhost:3000/place/update/${currentSelection._id}`,currentSelection).then(response=> {
-      console.log(response.data);
+     
       setCurrentSelection(selected)
       setState("add")
     })
   }
   
   const editPlaceHandler=place=>(e)=>{
-      setCurrentSelection(place);
+      console.log(place);
+      setCurrentSelection({...place,
+                           Langitude:place.location.coordinates[0],
+                           Latitude:place.location.coordinates[1]
+                          });
       setState("edit")
      
   }
@@ -88,6 +96,11 @@ export default function PlaceHome() {
         
     });
   }
+  const addPlaceButton = ()=>{
+    // alert("test")
+    setCurrentSelection(selected)
+    setState("add")
+  }
   return (
       <div className={'row mt-5'}>
         <div className={'col-6 mr-auto magic'}>
@@ -97,6 +110,7 @@ export default function PlaceHome() {
             <MaterialButton
            text={"Add Place"}
            type={"button"}
+           onClickHandler={addPlaceButton}
           //  onClickHandler=
          />
          <br/>
@@ -147,6 +161,22 @@ export default function PlaceHome() {
                 images={currentSelection.images.map(image=>({src:image}))}
                 handler={e=>console.log("it worked")}
             />
+            <div className="row">
+              <div className="col-6">
+                <MaterialInput
+                  label="Langitude"
+                  value={currentSelection.Langitude}
+                  onChangeHandler={e=>setCurrentSelection({...currentSelection,Langitude:e.target.value})}
+                />
+              </div>
+              <div className="col-6">
+                <MaterialInput
+                  label="Latitude"
+                  value={currentSelection.Latitude}
+                  onChangeHandler={e=>setCurrentSelection({...currentSelection,Latitude:e.target.value})}
+                />
+              </div>
+            </div>
             <div className="row">
               <div className="col-6">
                 <MaterialSelect
